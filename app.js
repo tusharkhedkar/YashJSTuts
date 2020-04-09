@@ -83,13 +83,13 @@ console.log(hasKey({
 // Using self made function
 
 var isKey = (obj, prop) => {
-    let hasKey = false;
+
     for (let property of Object.keys(obj)) {
 
         if (property === prop)
-            hasKey = true;
+            return true;
     }
-    return hasKey;
+    return false;
 };
 
 console.log(isKey({
