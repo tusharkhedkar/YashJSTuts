@@ -1,5 +1,3 @@
-
-
 // 1. min-max function
 
 var minMax = (numArr) => {
@@ -19,29 +17,31 @@ var minMax = (numArr) => {
     return output;
 };
 
+console.log(minMax([1, 23, 34, -23, 67]));
 
 // 1. filter the  array  function
 
 var filterArray = (arr) => {
     return arr.filter(val => typeof val !== 'string');
-}
+};
 
+console.log(filterArray(['a', 'b', 1, 4, 5, 'd']));
 
 
 // getStudnetNames function 
 
 /*
-    * Same functionality can be achieved in many ways...
-    * Although I tried the approach where minimum Hard-coded values to be used.
-    *
-*/
+ * Same functionality can be achieved in many ways...
+ * Although I tried the approach where minimum Hard-coded values to be used.
+ *
+ */
 
 // Created Student Object Contructor
-var Student = function(id, name, subject) {
-        this.id = id;
-        this.name = name;
-        this.subject = subject;
-        this.getName = () =>  this.name;
+var Student = function (id, name, subject) {
+    this.id = id;
+    this.name = name;
+    this.subject = subject;
+    this.getName = () => this.name;
 }
 
 // Multiple Students
@@ -61,7 +61,7 @@ console.log(students);
 
 // 3. GetStudentsNames Function...
 var getStudentNames = (arr) => {
-        return arr.map(el => el.getName());
+    return arr.map(el => el.getName());
 }
 
 console.log(getStudentNames(students));
@@ -74,50 +74,62 @@ var hasKey = (obj, prop) => {
     return obj.hasOwnProperty(prop);
 };
 
+console.log(hasKey({
+    a: 11,
+    b: 23,
+    c: 45
+}, 'd'));
+
 // Using self made function
 
 var isKey = (obj, prop) => {
     let hasKey = false;
-    for(let property of Object.keys(obj)) {
-        
-        if(property === prop)
+    for (let property of Object.keys(obj)) {
+
+        if (property === prop)
             hasKey = true;
     }
     return hasKey;
 };
 
-console.log(isKey({a : 11, b : 23, c : 45}, 'c'));
+console.log(isKey({
+    a: 11,
+    b: 23,
+    c: 45
+}, 'c'));
 
 
 // 5. HTML Based code
 document.querySelector('.btnContactSubmit').addEventListener('click', () => {
 
-            // Selected form node
-        let node = document.querySelector('.userform');
-            // firstname node
-        let fnameNode = document.getElementById('fname');
-            // lastname node
-        let lNameNode = document.getElementById('lname');
+    // Selected form node
+    let node = document.querySelector('.userform');
+    // firstname node
+    let fnameNode = document.getElementById('fname');
+    // lastname node
+    let lNameNode = document.getElementById('lname');
 
     let fName = fnameNode.value;
     let lName = lNameNode.value;
 
-    // 
-    if(!fName || !lName) {
+    // Inputs invalid condition
+    if (!fName || !lName) {
         alert('Invalid Inputs...');
         return;
     }
 
     fnameNode.value = '';
     lNameNode.value = '';
-    
-    fName = fName.substring(0,1).toUpperCase() + fName.substring(1); 
-    lName = lName.substring(0,1).toUpperCase() + lName.substring(1); 
+
+    // First & Last Name
+    fName = fName.substring(0, 1).toUpperCase() + fName.substring(1);
+    lName = lName.substring(0, 1).toUpperCase() + lName.substring(1);
     let html = `<div class = "userfullname">${fName} ${lName}</div>`;
-        console.log(document.querySelector('.userfullname'));
-        
-        if(document.querySelector('.userfullname'))  
-          document.querySelector('.userfullname').remove();
+    console.log(document.querySelector('.userfullname'));
+
+    // Condition for not to create another text node if already
+    if (document.querySelector('.userfullname'))
+        document.querySelector('.userfullname').remove();
 
 
     node.insertAdjacentHTML('beforeend', html);
